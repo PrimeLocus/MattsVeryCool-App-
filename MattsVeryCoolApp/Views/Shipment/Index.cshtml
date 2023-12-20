@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MattsVeryCoolApp.Models.Shipment>
+
+@{
+    ViewData["Title"] = "Shipments";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Shipment</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Weight</th>
+        <th>Status</th>
+        <th>Customer</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var shipment in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => shipment.Origin)</td>
+            <td>@Html.DisplayFor(modelItem => shipment.Destination)</td>
+            <td>@Html.DisplayFor(modelItem => shipment.Weight)</td>
+            <td>@Html.DisplayFor(modelItem => shipment.Status)</td>
+            <td>@Html.DisplayFor(modelItem => shipment.Customer.Name)</td> <!-- Display the customer's name -->
+            <td>
+                <a asp-action="Edit" asp-route-id="@shipment.ShipmentId" class="btn btn-success">Edit</a>
+                <a asp-action="Details" asp-route-id="@shipment.ShipmentId" class="btn btn-info">Details</a>
+                <a asp-action="Delete" asp-route-id="@shipment.ShipmentId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
