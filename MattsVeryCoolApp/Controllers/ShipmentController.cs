@@ -45,7 +45,6 @@ namespace MattsVeryCoolApp.Controllers
             return View(shipment);
         }
 
-
         // GET: Shipment/Create
         public IActionResult Create()
         {
