@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MattsVeryCoolApp.Models.Driver>
+
+@{
+    ViewData["Title"] = "Driver List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Driver</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Liscense Number</th>
+        <th>Vehicle Type</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => customer.Name)</td>
+            <td>@Html.DisplayFor(modelItem => customer.LicenseNumber)</td>
+            <td>@Html.DisplayFor(modelItem => customer.VehicleType)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@customer.DriverId" class="btn btn-success">Edit</a>
+                <a asp-action="Details" asp-route-id="@customer.DriverId" class="btn btn-info">View</a>
+                <a asp-action="Delete" asp-route-id="@customer.DriverId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
